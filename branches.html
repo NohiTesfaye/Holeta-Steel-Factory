@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Holeta Steel Factory – Branch Offices</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #ffffff;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(240, 248, 255, 0.7) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(230, 240, 255, 0.5) 0%, transparent 20%);
+    color: #333;
+    margin: 0;
+    padding: 40px;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.wrapper {
+    max-width: 1300px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #0056a7, #0083cc, #00a8e8);
+}
+
+.header-container {
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eef5fb;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: #003366;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+}
+
+.subtitle {
+    font-size: 24px;
+    color: #5d7b9c;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.company-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+    color: #666;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.company-info i {
+    color: #0056a7;
+}
+
+/* Search */
+.search-container {
+    margin-bottom: 35px;
+    position: relative;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 86, 167, 0.1);
+    border: 1px solid #e0e9f5;
+}
+
+.search-icon {
+    background-color: #f0f8ff;
+    padding: 0 25px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: #0056a7;
+    font-size: 24px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 24px 20px;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    background-color: #f9fcff;
+    color: #333;
+    font-weight: 500;
+}
+
+.search-box input::placeholder {
+    color: #9ab3d3;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+/* Table */
+.table-container {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e0e9f5;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: linear-gradient(135deg, #0056a7 0%, #0083cc 100%);
+}
+
+thead th {
+    padding: 26px 25px;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+    color: white;
+    font-size: 22px;
+    transition: background-color 0.2s;
+    position: relative;
+}
+
+thead th:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+thead th span {
+    font-size: 14px;
+    margin-left: 10px;
+    opacity: 0.8;
+}
+
+tbody tr {
+    border-bottom: 1px solid #f0f7ff;
+    transition: all 0.2s ease;
+}
+
+tbody tr:hover {
+    background-color: #f0f8ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 86, 167, 0.1);
+}
+
+tbody td {
+    padding: 26px 25px;
+    font-size: 21px;
+    color: #444;
+    vertical-align: middle;
+}
+
+.office {
+    font-weight: 700;
+    color: #003366;
+    font-size: 22px;
+}
+
+.location {
+    color: #5d7b9c;
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.phone-link {
+    color: #0083cc;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 21px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.phone-link:hover {
+    color: #0056a7;
+    transform: scale(1.05);
+}
+
+.phone-link i {
+    color: #0056a7;
+    font-size: 20px;
+}
+
+.table-footer {
+    padding: 25px;
+    text-align: center;
+    color: #7a95b8;
+    font-size: 20px;
+    font-weight: 500;
+    border-top: 1px solid #eef5fb;
+    background-color: #f9fcff;
+}
+
+.branch-count {
+    font-weight: 700;
+    color: #0056a7;
+    font-size: 22px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .wrapper {
+        padding: 40px;
+    }
+    
+    h1 {
+        font-size: 42px;
+    }
+    
+    thead th, tbody td, .office {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .wrapper {
+        padding: 35px;
+    }
+    
+    h1 {
+        font-size: 38px;
+    }
+    
+    .subtitle {
+        font-size: 22px;
+    }
+    
+    .company-info {
+        font-size: 18px;
+    }
+    
+    thead th, tbody td, .office, .phone-link, .location {
+        font-size: 19px;
+        padding: 22px 20px;
+    }
+    
+    .search-box input {
+        font-size: 18px;
+        padding: 22px 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 25px;
+    }
+    
+    .wrapper {
+        padding: 30px;
+    }
+    
+    h1 {
+        font-size: 34px;
+    }
+    
+    .subtitle {
+        font-size: 20px;
+    }
+    
+    .company-info {
+        font-size: 17px;
+    }
+    
+    thead th, tbody td, .office, .phone-link, .location {
+        font-size: 18px;
+        padding: 20px 18px;
+    }
+    
+    .search-box input {
+        font-size: 17px;
+        padding: 20px 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding: 20px;
+    }
+    
+    .wrapper {
+        padding: 25px;
+    }
+    
+    h1 {
+        font-size: 30px;
+    }
+    
+    .subtitle {
+        font-size: 18px;
+    }
+    
+    .company-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 16px;
+    }
+    
+    thead th, tbody td, .office, .phone-link, .location {
+        font-size: 17px;
+        padding: 18px 15px;
+    }
+    
+    .search-box input {
+        font-size: 16px;
+        padding: 18px 15px;
+    }
+    
+    .table-footer {
+        font-size: 18px;
+        padding: 20px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header-container">
+        <h1>Holeta Steel Factory</h1>
+        <div class="subtitle">Branch Offices & Contact Information</div>
+        <div class="company-info">
+            <i class="fas fa-industry"></i>
+            <span>Ethiopia's Leading Steel Manufacturer Since 2011</span>
+        </div>
+    </div>
+
+    <div class="search-container">
+        <div class="search-box">
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <input type="text" id="searchInput" placeholder="Search branch office by name or location...">
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table id="branchesTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Office Name <span>▲▼</span></th>
+                    <th onclick="sortTable(1)">Location <span>▲▼</span></th>
+                    <th onclick="sortTable(2)">Telephone <span>▲▼</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="office">Head Office (Main)</td>
+                    <td class="location">Addis Ababa</td>
+                    <td><a href="tel:0115512400" class="phone-link"><i class="fas fa-phone"></i>011 551 24 00</a></td>
+                </tr>
+                <tr>
+                    <td class="office">Lebu Branch</td>
+                    <td class="location">Addis Ababa</td>
+                    <td><a href="tel:0115528457" class="phone-link"><i class="fas fa-phone"></i>011 552 84 57</a></td>
+                </tr>
+                <tr>
+                    <td class="office">Piassa Main Office</td>
+                    <td class="location">Addis Ababa</td>
+                    <td><a href="tel:0115505861" class="phone-link"><i class="fas fa-phone"></i>011 550 58 61</a></td>
+                </tr>
+                <tr>
+                    <td class="office">Laga Xafo Branch</td>
+                    <td class="location">Addis Ababa</td>
+                    <td><a href="tel:0115507940" class="phone-link"><i class="fas fa-phone"></i>011 550 79 40</a></td>
+                </tr>
+                <tr>
+                    <td class="office">Holeta Factory</td>
+                    <td class="location">Holeta</td>
+                    <td><a href="tel:0115515055" class="phone-link"><i class="fas fa-phone"></i>011 551 50 55</a></td>
+                </tr>
+                <tr>
+                    <td class="office">Ashewa Meda Branch</td>
+                    <td class="location">North Shewa</td>
+                    <td><a href="tel:0111564183" class="phone-link"><i class="fas fa-phone"></i>011 156 41 83</a></td>
+                </tr>
+                <tr>
+                    <td class="office">Ambo Branch</td>
+                    <td class="location">Ambo</td>
+                    <td><a href="tel:0113314578" class="phone-link"><i class="fas fa-phone"></i>011 331 45 78</a></td>
+                </tr>
+                <tr>
+                    <td class="office">Naqamte Branch</td>
+                    <td class="location">Naqamte</td>
+                    <td><a href="tel:0114213390" class="phone-link"><i class="fas fa-phone"></i>011 421 33 90</a></td>
+                </tr>
+                <tr>
+                    <td class="office">Adama Branch</td>
+                    <td class="location">Adama</td>
+                    <td><a href="tel:0116812244" class="phone-link"><i class="fas fa-phone"></i>011 681 22 44</a></td>
+                </tr>
+                <tr>
+                    <td class="office">Asella Branch</td>
+                    <td class="location">Asella</td>
+                    <td><a href="tel:0116617755" class="phone-link"><i class="fas fa-phone"></i>011 661 77 55</a></td>
+                </tr>
+                <tr>
+                    <td class="office">Bale Robe Branch</td>
+                    <td class="location">Bale Robe</td>
+                    <td><a href="tel:0114728866" class="phone-link"><i class="fas fa-phone"></i>011 472 88 66</a></td>
+                </tr>
+                <tr>
+                    <td class="office">Mizan Tepi Branch</td>
+                    <td class="location">Mizan Tepi</td>
+                    <td><a href="tel:0115819021" class="phone-link"><i class="fas fa-phone"></i>011 581 90 21</a></td>
+                </tr>
+                <tr>
+                    <td class="office">Jimma Branch</td>
+                    <td class="location">Jimma</td>
+                    <td><a href="tel:0114162488" class="phone-link"><i class="fas fa-phone"></i>011 416 24 88</a></td>
+                </tr>
+                <tr>
+                    <td class="office">Hawassa Branch</td>
+                    <td class="location">Hawassa</td>
+                    <td><a href="tel:0113201199" class="phone-link"><i class="fas fa-phone"></i>011 320 11 99</a></td>
+                </tr>
+                <tr>
+                    <td class="office">Wolaita Sodo Branch</td>
+                    <td class="location">Wolaita Sodo</td>
+                    <td><a href="tel:0113435544" class="phone-link"><i class="fas fa-phone"></i>011 343 55 44</a></td>
+                </tr>
+                <tr>
+                    <td class="office">Shashamane Branch</td>
+                    <td class="location">Shashamane</td>
+                    <td><a href="tel:0113697812" class="phone-link"><i class="fas fa-phone"></i>011 369 78 12</a></td>
+                </tr>
+                <tr>
+                    <td class="office">Bishoftu Branch</td>
+                    <td class="location">Bishoftu</td>
+                    <td><a href="tel:0116603210" class="phone-link"><i class="fas fa-phone"></i>011 660 32 10</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="table-footer">
+            Total: <span class="branch-count">17</span> branch offices across Ethiopia
+        </div>
+    </div>
+</div>
+
+<script>
+/* Search */
+document.getElementById("searchInput").addEventListener("keyup", function () {
+    const filter = this.value.toLowerCase();
+    const rows = document.querySelectorAll("#branchesTable tbody tr");
+    
+    let visibleCount = 0;
+    
+    rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        if (text.includes(filter)) {
+            row.style.display = "";
+            visibleCount++;
+        } else {
+            row.style.display = "none";
+        }
+    });
+    
+    // Update the branch count in footer
+    document.querySelector('.branch-count').textContent = visibleCount;
+});
+
+/* Sort */
+let sortDirection = true;
+function sortTable(colIndex) {
+    const table = document.getElementById("branchesTable");
+    const tbody = table.tBodies[0];
+    const rows = Array.from(tbody.rows);
+
+    rows.sort((a, b) => {
+        const A = a.cells[colIndex].innerText.toLowerCase();
+        const B = b.cells[colIndex].innerText.toLowerCase();
+        return sortDirection ? A.localeCompare(B) : B.localeCompare(A);
+    });
+
+    sortDirection = !sortDirection;
+    
+    // Clear and re-append rows in sorted order
+    while (tbody.firstChild) {
+        tbody.removeChild(tbody.firstChild);
+    }
+    
+    rows.forEach(row => tbody.appendChild(row));
+    
+    // Update sort indicator
+    const headers = table.querySelectorAll('thead th span');
+    headers.forEach(span => span.innerHTML = '▲▼');
+    headers[colIndex].innerHTML = sortDirection ? '▼' : '▲';
+}
+</script>
+
+</body>
+</html>
